@@ -35,6 +35,11 @@
     ```
 2. **Have Fun!** ✨
 
+### Customization
+
+**Categories**: Upon initial run you will get categories.txt in the script's folder - you can remove categories you don't want.
+
+
 ### Why Use Randofy?
 
 - **Broaden Your Horizons**: Discover new music you might never have found otherwise! 🌍🎵
