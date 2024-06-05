@@ -43,3 +43,5 @@
 ### Optional: Desktop Icons
 
 You may use the included png or ico images if you wish to make a destop shortcut for the script.
+
+Note: given the way it works, only songs added to playlists will be picked, so it's less likely to encounter non-popular tracks.
