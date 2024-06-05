@@ -1,6 +1,7 @@
 #  Randofy: Spice Up Your Music Life 🎲 🎵
 
-![randofyyy](https://github.com/mediastacks/Randofy/assets/69261677/983ae9b8-d5a8-4ab2-9e9f-792bd6dd4e68)
+![randofyyyyyy(1)](https://github.com/mediastacks/Randofy/assets/69261677/c34980e3-39ec-4b68-b580-4e2b9a488ac0)
+
 
 
 
