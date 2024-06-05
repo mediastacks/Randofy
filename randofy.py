@@ -19,7 +19,7 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID, client_secre
 
 
 def fetch_all_categories(sp):
-    """Fetches all categories from Spotify."""
+    #Fetches all categories from Spotify and saves to a file.
     all_categories = []
     offset = 0
     limit = 50  # Maximum allowed by Spotify API
@@ -31,13 +31,48 @@ def fetch_all_categories(sp):
         all_categories.extend(categories)
         offset += limit
         
-
+    # Get the script's directory
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    
+    # Construct the file path relative to the script's directory
+    file_path = os.path.join(script_dir, 'categories.txt')
+    
+    # Write all categories to the file
+    with open(file_path, 'w') as file:
+        for category in all_categories:
+            file.write(f"{category['id']} - {category['name']}\n")
+    
+    print("Fetched categories from Spotify and saved to file.")
+    
     return all_categories
+
+def get_all_categories_from_file():
+    #Reads categories from the file.
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    file_path = os.path.join(script_dir, 'categories.txt')
+    
+    categories = []
+    with open(file_path, 'r') as file:
+        for line in file:
+            category_id, category_name = line.strip().split(' - ', 1)
+            categories.append({'id': category_id, 'name': category_name})
+    
+    print("Read categories from file.")
+    return categories
 
 def get_random_track(sp):
     try:
-        # Fetch all categories
-        categories = fetch_all_categories(sp)
+        # Get the script's directory
+        script_dir = os.path.dirname(os.path.realpath(__file__))
+        file_path = os.path.join(script_dir, 'categories.txt')
+        
+        # Check if the categories.txt file exists
+        if os.path.exists(file_path):
+            # Read categories from the file
+            categories = get_all_categories_from_file()
+        else:
+            # Fetch categories from Spotify and save to the file
+            categories = fetch_all_categories(sp)
         
         if not categories:
             print("No categories found.")
@@ -46,7 +81,6 @@ def get_random_track(sp):
         # Now you have all categories, select one randomly
         category = random.choice(categories)['id']
     
-        
         # Fetch a random playlist from the chosen category
         playlists = sp.category_playlists(category_id=category, limit=50)['playlists']['items']
         playlist = random.choice(playlists)['id']
