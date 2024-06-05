@@ -29,7 +29,35 @@ def get_random_track(sp):
         
         # Fetch the tracks from the chosen playlist
         tracks = sp.playlist_tracks(playlist, limit=100)['items']
-        track = random.choice(tracks)['track']
+        
+        # Initialize empty lists for tracks in each popularity range
+        low_popularity_tracks = []
+        high_popularity_tracks = []
+        
+        # Populate lists based on track popularity
+        for track in tracks:
+            if 1 <= track['track']['popularity'] <= 35:
+                low_popularity_tracks.append(track)
+            elif track['track']['popularity'] > 35:
+                high_popularity_tracks.append(track)
+        
+        # Check if there are enough tracks in each range
+        if len(low_popularity_tracks) > 0 and len(high_popularity_tracks) > 0:
+            # Weighted choice between popularity ranges
+            if random.random() < 0.7:  # 70% chance to choose from lower popularity tracks
+                selected_tracks = low_popularity_tracks
+            else:  # 30% chance to choose from high popularity tracks
+                selected_tracks = high_popularity_tracks
+        elif len(low_popularity_tracks) > 0:
+            selected_tracks = low_popularity_tracks
+        elif len(high_popularity_tracks) > 0:
+            selected_tracks = high_popularity_tracks
+        else:
+            print("Not enough tracks found in either popularity range.")
+            return None  # Or handle this case as appropriate
+        
+        # Select a random track from the chosen range
+        track = random.choice(selected_tracks)['track']
         
         return track
     except SpotifyException as e:
