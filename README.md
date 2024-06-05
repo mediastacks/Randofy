@@ -1,6 +1,7 @@
 #  Randofy: Spice Up Your Music Life 🎲 🎵
 
- ![randofy](https://github.com/mediastacks/Randofy/assets/69261677/fdd82592-bed2-4801-af48-bdf61d47c14c)
+![randofyyy](https://github.com/mediastacks/Randofy/assets/69261677/983ae9b8-d5a8-4ab2-9e9f-792bd6dd4e68)
+
 
 
 **Randofy** is a fun little Python script designed to broaden your musical horizons by playing a random song from the Spotify catalog. It's your personal DJ who always surprises you with something new! 🎧✨
