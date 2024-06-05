@@ -7,7 +7,7 @@
 
 ### How It Works
 
-1. **Login to Spotify**: Uses your dev credentials to log into Spotify [(you can get them here)](https://developer.spotify.com/)
+1. **Logins to Spotify**: Uses your dev credentials to log in [(you can get them here)](https://developer.spotify.com/)
 2. **Picks a Random Song**: Selects a random music category, then a random playlist within that category, and finally a random song from that playlist.
 3. **Plays It**: Finds your active Spotify device and starts playing the selected song. 🎶
 
@@ -25,19 +25,19 @@
     SPOTIPY_REDIRECT_URI=http://localhost:8888/callback
     SPOTIPY_USERNAME=your_spotify_username
     ```
+### Usage
 
-3. **Run the Script**:
+1. **Run the Script**:
     ```bash
     python randofy.py
     ```
+2. **Have Fun!** ✨
 
 ### Why Use Randofy?
 
 - **Broaden Your Horizons**: Discover new music you might never have found otherwise! 🌍🎵
-- **Fun and Surprising**: Never know what you'll get next, that can be fun! 🎉
+- **Fun and Surprising**: Never know what you'll get next, it can be fun! 🎉
 
-### Optional: Desktop Shortcut
+### Optional: Desktop Icons
 
-You may use the included icon png or ico if you wish to make a destop shortcut for the script.
-
-Have fun! ❤️
+You may use the included png or ico images if you wish to make a destop shortcut for the script.
