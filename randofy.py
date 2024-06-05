@@ -17,11 +17,35 @@ USERNAME = os.getenv('SPOTIPY_USERNAME')
 scope = "user-library-read user-read-playback-state user-modify-playback-state"
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, redirect_uri=REDIRECT_URI, scope=scope, username=USERNAME))
 
+
+def fetch_all_categories(sp):
+    """Fetches all categories from Spotify."""
+    all_categories = []
+    offset = 0
+    limit = 50  # Maximum allowed by Spotify API
+    
+    while True:
+        categories = sp.categories(limit=limit, offset=offset)['categories']['items']
+        if not categories:
+            break
+        all_categories.extend(categories)
+        offset += limit
+        
+
+    return all_categories
+
 def get_random_track(sp):
     try:
-        # Fetch a list of categories
-        categories = sp.categories(limit=50)['categories']['items']
+        # Fetch all categories
+        categories = fetch_all_categories(sp)
+        
+        if not categories:
+            print("No categories found.")
+            return None
+        
+        # Now you have all categories, select one randomly
         category = random.choice(categories)['id']
+    
         
         # Fetch a random playlist from the chosen category
         playlists = sp.category_playlists(category_id=category, limit=50)['playlists']['items']
